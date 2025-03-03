@@ -14,6 +14,9 @@
                 accent: '#3752FD',
                 primary: '#00303C',
                 secondary: '#F4F7FF',
+                screenLeft: '#3752FF',
+                screenMiddle: '#6B7FFF',
+                screenRight: '#A1AEFF',
               }
             }
           }
@@ -31,28 +34,168 @@
         }
     </style>
 </head>
-<body class="text-primary bg-secondary">
+<body class="text-primary bg-secondary poppins">
     <header>
         <!-- Navbar -->
         <nav class="bg-white rounded-2xl w-5/6 my-6 mx-auto p-4 flex justify-between">
+          <!-- Left Contents -->
           <div class="flex items-center space-x-4">
             <img class="w-14 h-14" src="images/logo.png" alt="Logo of the site" class="">
             <h3 class="text-4xl font-light">Dev<span class="font-bold">Board</span></h3>
           </div>
+          <!-- Right Contents -->
            <div class="flex space-x-8 items-center">
-            <button class="bg-secondary rounded-full flex w-[123px] h-[64px] justify-around items-center">
+            <button class="bg-secondary p-4 rounded-full flex w-[123px] h-[64px] justify-around items-center">
               <img class="w-8 h-8" src="images/checkbox.png" alt="">
-              <p class="font-bold text-4xl poppins">23</p>
+              <p class="font-bold text-3xl poppins" id="com-task">23</p>
             </button>
-            <img class="border-8 border-secondary rounded-full" src="images/theme-btn.png" alt="">
+            <button onclick="changeBackgroundColor()">
+              <img class="border-8 border-secondary rounded-full" src="images/theme-btn.png" alt="">
+            </button>
            </div> 
         </nav>
     </header>
-    <main>
+    <main class="w-5/6 mx-auto flex space-x-6 mb-6">
+      <!-- Left side tasks -->
+       <div class="w-3/4 p-4  rounded-2xl bg-white">
+        <!-- Upper tasks -->
+         <div class="grid grid-cols-4 gap-4">
+          <!-- Left Card -->
+           <div class="flex bg-secondary rounded-lg p-4 justify-center items-center">
+            <div class="bg-white w-12 h-12 rounded-full">
+              <img class="w-5 h-5 my-[15px] mx-auto" src="images/checkbox.png" alt="">
+            </div>
+            <div>
+              <p class="text-xs font-medium opacity-80">Task Assigned</p>
+              <p class="font-bold text-lg">0<span id="num-task">6</span></p>
+            </div>
+           </div>
+           <!-- Middle Card -->
+            <div class="flex items-center p-2 pl-6 bg-gradient-to-br from-screenLeft from-0% via-screenMiddle via-53% to-screenRight to-150% rounded-lg col-span-2 space-x-2">
+              <img class="w-[60px]" src="images/board.png" alt="">
+              <p class="text-white">Discover Something <br> New Today!</p>
+            </div>
+            <!-- Right Card -->
+             <div class="flex bg-secondary rounded-lg justify-center items-center p-4 col-span-1">
+              <div class="bg-white w-12 h-12 rounded-full">
+                <img class="w-5 h-5 my-[15px] mx-auto" src="images/calender.png" alt="">
+              </div>
+              <p id="current-date" class="text-sm"></p>
+             </div>
+         </div>
+         <br>
+         <!-- Lower tasks -->
+          <div class="container grid grid-cols-3 gap-4 border-dashed border-0 border-t-2 pt-6">
+            <!-- Card-1 -->
+            <div class="bg-secondary p-4 rounded-lg" id="card-1">
+              <div class="text-left p-2 bg-white rounded-md mb-2 w-[88px]">
+                <p class="text-sm">ShopEase</p>
+              </div>
+              <h4 class="text-base font-medium mb-2" id="task1">Fix Mobile Button Issue</h4>
+              <p class="p-3 bg-white rounded-md text-sm text-primary/[0.5] mb-2">Debug using Chrome DevTools, check for overlapping</p>
+              <!-- Button area -->
+              <div class="flex justify-between items-center border-dashed border-0 border-t-2 pt-3">
+                <div>
+                  <p class="opacity-70 text-xs">Deadline</p>
+                  <h4 class="text-xs font-medium">21 March 2025</h4>
+                </div>
+                <button onclick="showAlert(); changeColor(); addCompletionMessage(); this.disabled = true;" id="btn-1" class="bg-accent text-white p-2 rounded-lg text-xs complete">Completed</button>
+              </div>
+            </div>
+
+            <!-- Card-2 -->
+            <div class="bg-secondary p-4 rounded-lg" id="card-2">
+              <p class="p-2 bg-white rounded-md w-[96px] text-sm mb-2">CloudSync</p>
+              <h4 class="text-base font-medium mb-2" id="task2">Add Dark Mode</h4>
+              <p class="p-3 bg-white rounded-md text-sm text-primary/[0.5] mb-2">Store the user's preference in localStorage, CSS vari</p>
+              <!-- Button area -->
+              <div class="flex justify-between items-center border-dashed border-0 border-t-2 pt-3">
+                <div>
+                  <p class="opacity-70 text-xs">Deadline</p>
+                  <h4 class="text-xs font-medium">21 March 2025</h4>
+                </div>
+                <button onclick="showAlert(); changeColor2(); addCompletionMessage2(); this.disabled = true;" id="btn-2" class="bg-accent text-white p-2 rounded-lg text-xs complete">Completed</button>
+              </div>
+            </div>
+            <!-- Card-3 -->
+            <div class="bg-secondary p-4 rounded-lg" id="card-3">
+              <p class="p-2 bg-white rounded-md w-[80px] text-sm mb-2">SwiftPay</p>
+              <h4 class="text-base font-medium mb-2" id="task3">Optimize Home Page</h4>
+              <p class="p-3 bg-white rounded-md text-sm text-primary/[0.5] mb-2">Debug using Chrome DevTools, check for overlapping</p>
+              <!-- Button area -->
+              <div class="flex justify-between items-center border-dashed border-0 border-t-2 pt-3">
+                <div>
+                  <p class="opacity-70 text-xs">Deadline</p>
+                  <h4 class="text-xs font-medium">21 March 2025</h4>
+                </div>
+                <button onclick="showAlert(); changeColor3(); addCompletionMessage3(); this.disabled = true;" id="btn-3" class="bg-accent text-white p-2 rounded-lg text-xs complete">Completed</button>
+              </div>
+            </div>
+            <!-- Card-4 -->
+            <div class="bg-secondary p-4 rounded-lg" id="card-4">
+              <p class="p-2 bg-white rounded-md w-[54px] text-sm mb-2">Meta</p>
+              <h4 class="text-base font-medium mb-2" id="task4">Add New Emoji</h4>
+              <p class="p-3 bg-white rounded-md text-sm text-primary/[0.5] mb-2">Debug using Chrome DevTools, check for overlapping</p>
+              <!-- Button area -->
+              <div class="flex justify-between items-center border-dashed border-0 border-t-2 pt-3">
+                <div>
+                  <p class="opacity-70 text-xs">Deadline</p>
+                  <h4 class="text-xs font-medium">21 March 2025</h4>
+                </div>
+                <button onclick="showAlert(); changeColor4(); addCompletionMessage4(); this.disabled = true;" id="btn-4" class="bg-accent text-white p-2 rounded-lg text-xs complete">Completed</button>
+              </div>
+            </div>
+            <!-- Card-5 -->
+            <div class="bg-secondary p-4 rounded-lg" id="card-5">
+              <p class="p-2 bg-white rounded-md w-[94px] text-sm mb-2">Google LLC</p>
+              <h4 class="text-base font-medium mb-2" id="task5">Integrate OpenAI API</h4>
+              <p class="p-3 bg-white rounded-md text-sm text-primary/[0.5] mb-2">Debug using Chrome DevTools, check for overlapping</p>
+              <!-- Button area -->
+              <div class="flex justify-between items-center border-dashed border-0 border-t-2 pt-3">
+                <div>
+                  <p class="opacity-70 text-xs">Deadline</p>
+                  <h4 class="text-xs font-medium">21 March 2025</h4>
+                </div>
+                <button onclick="showAlert(); changeColor5(); addCompletionMessage5(); this.disabled = true;" id="btn-5" class="bg-accent text-white p-2 rounded-lg text-xs complete">Completed</button>
+              </div>
+            </div>
+            <!-- Card-6 -->
+            <div class="bg-secondary p-4 rounded-lg" id="card-6">
+              <p class="p-2 bg-white rounded-md w-[90px] text-sm mb-2">Glassdoor</p>
+              <h4 class="text-base font-medium mb-2" id="task6">Improve Job Searching</h4>
+              <p class="p-3 bg-white rounded-md text-sm text-primary/[0.5] mb-2">Debug using Chrome DevTools, check for overlapping</p>
+              <!-- Button area -->
+              <div class="flex justify-between items-center border-dashed border-0 border-t-2 pt-3">
+                <div>
+                  <p class="opacity-70 text-xs">Deadline</p>
+                  <h4 class="text-xs font-medium">21 March 2025</h4>
+                </div>
+                <button onclick="showAlert(); changeColor6(); addCompletionMessage6(); this.disabled = true;" id="btn-6" class="bg-accent text-white p-2 rounded-lg text-xs complete">Completed</button>
+              </div>
+            </div>
+
+          </div>
+
+       </div>
+
+       <!-- Activity Log Section -->
+       <section class="w-1/4 p-4 rounded-2xl bg-white">
+        <!-- Activity -->
+         <div class="flex flex-col justify-center items-center space-y-4 border-dashed border-0 border-b-2 pb-3">
+          <div class="flex justify-center space-x-3 pt-2">
+            <img src="images/activity.png" alt="">
+            <p class="font-medium text-l">Activity Log</p>
+          </div>
+          <button onclick="clearActivityLog()" class="bg-accent text-white p-2 rounded-lg text-xs w-[150px]">Clear History</button>
+         </div>
+         <div id="task-message" class="mt-4 space-y-2 activity-history"></div>
+        </section> 
 
     </main>
     <footer>
 
     </footer>
+    <!-- Javascript files added -->
+     <script src="js/script1.js"></script>
 </body>
 </html>
